@@ -1,5 +1,7 @@
 package restriccionDesafio;
+import java.time.LocalDate;
 
-public class RestriccionTemporal {
-
+public abstract class RestriccionTemporal {
+	
+	public abstract boolean cumple(LocalDate fecha);
 }
