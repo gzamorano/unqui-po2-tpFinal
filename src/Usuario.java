@@ -16,7 +16,7 @@ public class Usuario {
 		return this.desafiosDelUsuario;
 	}
 
-	public void addDesafioDelUsuario(DesafioDelUsuario desafioDelUsuario) {
+	public void añadirDesafioDelUsuario(DesafioDelUsuario desafioDelUsuario) {
 		this.getDesafiosDelUsuario().add(desafioDelUsuario);
 	}
 
