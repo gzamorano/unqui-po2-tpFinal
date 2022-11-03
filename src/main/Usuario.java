@@ -1,3 +1,4 @@
+package main;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +43,7 @@ public class Usuario {
 	public Double porcentajeDeCompletitudGeneral() {
 		List<DesafioDelUsuario> desafiosAceptadosYCompletados = this.getDesafiosDelUsuario()
 											.stream()
-											.filter(desafioUsuario -> !(desafioUsuario.getEstadoDesafio() instanceof EsperandoAceptacion))
+											.filter(desafioUsuario -> !(desafioUsuario.getEstado() instanceof EsperandoAceptacion))
 											.toList();
 		
 		Double porcentajeTotal = desafiosAceptadosYCompletados

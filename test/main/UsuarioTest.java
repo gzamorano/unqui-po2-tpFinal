@@ -1,3 +1,4 @@
+package main;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -6,6 +7,8 @@ import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import main.DesafioDelUsuario;
+import main.Usuario;
 import recomendacionDesafio.Preferencia;
 
 
