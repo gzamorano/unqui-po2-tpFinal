@@ -13,9 +13,6 @@ public class RestriccionFinDeSemana extends RestriccionTemporal{
 	}
 	
     public boolean esFinDeSemana(DayOfWeek dia) {
-    	if(dia == DayOfWeek.SATURDAY || dia == DayOfWeek.SUNDAY) {
-    		return true;
-    	}
-    	else { return false; }
+    	return(dia == DayOfWeek.SATURDAY || dia == DayOfWeek.SUNDAY);
     }
 }

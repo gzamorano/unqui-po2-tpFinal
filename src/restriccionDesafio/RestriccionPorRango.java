@@ -20,17 +20,11 @@ public class RestriccionPorRango extends RestriccionTemporal {
 
 	@Override
 	public boolean cumple(LocalDate fecha) {
-		if(estaEnElRango(fecha)) {
-			return true;
-		}
-		return false;
+		return estaEnElRango(fecha);
 	}
 	
 	private boolean estaEnElRango(LocalDate fecha) {
-		if(fecha.isAfter(this.getInicio()) || fecha.isEqual(this.getInicio()) &&
-		   fecha.isBefore(this.getFin()) || fecha.isEqual(this.getFin())) {
-			return true;
-		}
-		else { return false; }
-	}
+	return(fecha.isAfter(this.getInicio()) || fecha.isEqual(this.getInicio()) &&
+		   fecha.isBefore(this.getFin()) || fecha.isEqual(this.getFin()));
+    }
 }
