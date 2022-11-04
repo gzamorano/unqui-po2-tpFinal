@@ -13,14 +13,11 @@ public class RestriccionDiaDeSemana extends RestriccionTemporal{
 	}
 	
 	public boolean esDiaDeSemana(DayOfWeek dia) {
-		if(dia == DayOfWeek.MONDAY ||
+   return (dia == DayOfWeek.MONDAY ||
 		   dia == DayOfWeek.TUESDAY ||
 		   dia == DayOfWeek.WEDNESDAY ||
 		   dia == DayOfWeek.THURSDAY ||
-		   dia == DayOfWeek.FRIDAY){		 
-			 return true;
-		}
-		else { return false; }
+		   dia == DayOfWeek.FRIDAY);
 	}
 
 }
