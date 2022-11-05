@@ -54,12 +54,21 @@ public class Proyecto {
 		this.setNombre(nombre);
 		this.setDescripcion(descripcion);
 	}
+	
 	public void addParticipante(Usuario usuario) {
 		participantes.add(usuario);
 		this.agregarDesafiosAUsuario(usuario);
 	}
+	
 	private void agregarDesafiosAUsuario(Usuario usuario) {
-		this.getDesafios().stream().forEach(desafio -> usuario.añadirDesafioDelUsuario(new DesafioDelUsuario(desafio)));
+		this.getDesafios().stream().forEach(desafio -> usuario.añadirDesafioDelUsuario(new DesafioDelUsuario(desafio)));	
+	}
+	
+	public void addMuestra(Muestra muestra) {
+		muestras.add(muestra);	
+	}
+	public void addCategoria(Categoria categoria) {
+		categorias.add(categoria);
 		
 	}
 	
