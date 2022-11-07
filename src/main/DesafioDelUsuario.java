@@ -1,6 +1,5 @@
 package main;
-import estadoDesafio.EsperandoAceptacion;
-import estadoDesafio.EstadoDesafio;
+import estadoDesafio.*;
 
 public class DesafioDelUsuario {
 	private Integer cantidadMuestrasRecolectadas;
@@ -65,12 +64,16 @@ public class DesafioDelUsuario {
 		}
 	}
 
-	private boolean seAlcanzoLaCantidadDeMuestrasParaBatirElDesafio() {
+	public boolean seAlcanzoLaCantidadDeMuestrasParaBatirElDesafio() {
 		return this.getCantidadMuestrasRecolectadas() == this.getDesafio().getCantMuestrasParaBatir();
 	}
 
 	public void calificarDesafio(Integer puntuacion) {
 		this.getEstado().calificarDesafio(this, puntuacion);
+	}
+	
+	public boolean estaAceptado() {
+		return this.getEstado() instanceof DesafioAceptado;
 	}
 
 
