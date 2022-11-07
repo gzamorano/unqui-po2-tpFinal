@@ -10,7 +10,7 @@ public abstract class RecomendadorDesafio {
 	public abstract List<DesafioDelUsuario> recomendacionDesafiosPara(Usuario usuario);
 
 	public List<DesafioDelUsuario> desafiosOrdenadosSegunNivelDeCoincidencia(Usuario usuario) {
-		 return usuario.getDesafiosSinAceptar()
+		 return usuario.desafiosSinAceptar()
 				 .stream()
 				 .sorted((unDesafio, otroDesafio) -> 
 				 	this.nivelDeCoincidencia(usuario, unDesafio).compareTo(this.nivelDeCoincidencia(usuario, otroDesafio)))
