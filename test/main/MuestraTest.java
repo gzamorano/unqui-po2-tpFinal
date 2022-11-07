@@ -28,7 +28,7 @@ class MuestraTest {
 	void testConstructor() {
 		assertEquals(muestra.getCoordenadas().getX(), 130.00);
 		assertEquals(muestra.getCoordenadas().getY(), 200.00);
-		assertEquals(muestra.getFecha(), 2020-2-6);
+		assertEquals(muestra.getFecha(), LocalDate.of(2020,2,6));
 		assertEquals(muestra.getUsuario(), usuario);
 	}
 

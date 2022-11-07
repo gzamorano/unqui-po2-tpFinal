@@ -3,11 +3,13 @@ package main;
 import java.util.ArrayList;
 import java.util.List;
 
+import busquedaDeProyectos.Busqueda;
+
 public class Sistema {
 	
 	private List<Categoria> categorias = new ArrayList<Categoria>();
 	private List<Proyecto> proyectos = new ArrayList<Proyecto>();
-	//private Busqueda busqueda;
+	private Busqueda busquedaDeProyectos;
 	
 	
 	public List<Categoria> getCategorias() {
