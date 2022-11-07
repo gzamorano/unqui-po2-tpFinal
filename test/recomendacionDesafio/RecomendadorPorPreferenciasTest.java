@@ -71,7 +71,7 @@ class RecomendadorPorPreferenciasTest {
 		when(usuario.getDesafiosDelUsuario()).thenReturn(Arrays.asList(desafioDelUsuario1, desafioDelUsuario2));
 		
 		assertEquals(Arrays.asList(desafioDelUsuario2, desafioDelUsuario1)
-					, recomendadorPorPreferencias.desafiosOrdenadosSegunNivelDeCoincidencia(usuario));
+					, recomendadorPorPreferencias.desafiosNoTomadosOrdenadosSegunNivelDeCoincidencia(usuario));
 	}
 	
 	

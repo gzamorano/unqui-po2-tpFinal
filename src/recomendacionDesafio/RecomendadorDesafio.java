@@ -9,14 +9,6 @@ import main.Usuario;
 public abstract class RecomendadorDesafio {
 	public abstract List<DesafioDelUsuario> recomendacionDesafiosPara(Usuario usuario);
 
-	public List<DesafioDelUsuario> desafiosOrdenadosSegunNivelDeCoincidencia(Usuario usuario) {
-		 return usuario.desafiosSinAceptar()
-				 .stream()
-				 .sorted((unDesafio, otroDesafio) -> 
-				 	this.nivelDeCoincidencia(usuario, unDesafio).compareTo(this.nivelDeCoincidencia(usuario, otroDesafio)))
-				 .toList();
-	}
-
 	public Integer nivelDeCoincidencia(Usuario usuario, DesafioDelUsuario desafioDelUsuario) {
 		Preferencia preferenciaUsuario = usuario.getPreferencia();
 		Desafio desafio = desafioDelUsuario.getDesafio();

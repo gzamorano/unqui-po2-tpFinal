@@ -32,7 +32,15 @@ public class RecomendadorPorFavoritos extends RecomendadorDesafio {
 	}
 
 	public List<DesafioDelUsuario> desafiosConMayorCoincidencia(Usuario usuario, Integer cantidad) {
-		return this.desafiosOrdenadosSegunNivelDeCoincidencia(usuario).subList(0, cantidad);			 		
+		return this.desafiosCompletadosOrdenadosSegunNivelDeCoincidencia(usuario).subList(0, cantidad);			 		
+	}
+
+	public List<DesafioDelUsuario> desafiosCompletadosOrdenadosSegunNivelDeCoincidencia(Usuario usuario) {
+		 return usuario.desafiosCompletados()
+				 .stream()
+				 .sorted((unDesafio, otroDesafio) -> 
+				 	this.nivelDeCoincidencia(usuario, unDesafio).compareTo(this.nivelDeCoincidencia(usuario, otroDesafio)))
+				 .toList();
 	}
  
 }

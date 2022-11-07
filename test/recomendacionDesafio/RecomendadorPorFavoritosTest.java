@@ -22,12 +22,14 @@ class RecomendadorPorFavoritosTest {
 	
 	Preferencia preferencia;
 	Usuario usuario;
+	Usuario otroUsuario;
 	
 	@BeforeEach
 	void setUp() throws Exception {
 		recomendadorPorFavoritos = new RecomendadorPorFavoritos();
 		preferencia = mock(Preferencia.class);
 		usuario = spy(new Usuario(preferencia));
+		otroUsuario = mock(Usuario.class);
 		desafio1 = mock(Desafio.class);
 		desafio2 = mock(Desafio.class);
 		desafio3 = mock(Desafio.class);
@@ -35,17 +37,17 @@ class RecomendadorPorFavoritosTest {
 		desafioDelUsuario2 = spy(new DesafioDelUsuario(desafio2));
 		desafioDelUsuario3 = spy(new DesafioDelUsuario(desafio3));
 		
-		when(desafioDelUsuario1.getDesafio().getCantMuestrasParaBatir()).thenReturn(15);
-		when(desafioDelUsuario1.getDesafio().getDificultad()).thenReturn(2);
-		when(desafioDelUsuario1.getDesafio().getRecompensa()).thenReturn(25);
+		when(desafio1.getCantMuestrasParaBatir()).thenReturn(15);
+		when(desafio1.getDificultad()).thenReturn(2);
+		when(desafio1.getRecompensa()).thenReturn(25);
 		
-		when(desafioDelUsuario2.getDesafio().getCantMuestrasParaBatir()).thenReturn(25);
-		when(desafioDelUsuario2.getDesafio().getDificultad()).thenReturn(4);
-		when(desafioDelUsuario2.getDesafio().getRecompensa()).thenReturn(19);
+		when(desafio2.getCantMuestrasParaBatir()).thenReturn(25);
+		when(desafio2.getDificultad()).thenReturn(4);
+		when(desafio2.getRecompensa()).thenReturn(19);
 		
-		when(desafioDelUsuario3.getDesafio().getCantMuestrasParaBatir()).thenReturn(10);
-		when(desafioDelUsuario3.getDesafio().getDificultad()).thenReturn(4);
-		when(desafioDelUsuario3.getDesafio().getRecompensa()).thenReturn(20);
+		when(desafio3.getCantMuestrasParaBatir()).thenReturn(10);
+		when(desafio3.getDificultad()).thenReturn(4);
+		when(desafio3.getRecompensa()).thenReturn(20);
 	}
 
 	// Testea que el nivel de similitud entre un par de desafios
@@ -67,11 +69,16 @@ class RecomendadorPorFavoritosTest {
 	// Testea que se devuelva la cantidad deseada de desafios con mayor coincidencia de un usuario
 	@Test
 	void testDesafiosConMayorCoincidenciaParaUnUsuario() {
-		when(usuario.getPreferencia().getCantidadMuestras()).thenReturn(10);
-		when(usuario.getPreferencia().getDificultad()).thenReturn(3);
-		when(usuario.getPreferencia().getRecompensa()).thenReturn(15);
+		when(preferencia.getCantidadMuestras()).thenReturn(10);
+		when(preferencia.getDificultad()).thenReturn(3);
+		when(preferencia.getRecompensa()).thenReturn(15);
 		
 		when(usuario.getDesafiosDelUsuario()).thenReturn(Arrays.asList(desafioDelUsuario1, desafioDelUsuario2, desafioDelUsuario3));
+		
+		when(desafioDelUsuario1.getCantidadMuestrasRecolectadas()).thenReturn(15);
+		when(desafioDelUsuario2.getCantidadMuestrasRecolectadas()).thenReturn(25);
+		when(desafioDelUsuario3.getCantidadMuestrasRecolectadas()).thenReturn(10);
+		
 		
 		assertEquals(2, recomendadorPorFavoritos.desafiosConMayorCoincidencia(usuario, 2).size());
 		assertEquals(Arrays.asList(desafioDelUsuario3, desafioDelUsuario1)
@@ -217,19 +224,56 @@ class RecomendadorPorFavoritosTest {
 		
 		when(usuario.getDesafiosDelUsuario()).thenReturn(desafios);
 		
+		// Se igualan los valores de retorno de cada desafio y desafio del usuario para indicar que el desafio está completo
+		when(desafioDelUsuario1.getCantidadMuestrasRecolectadas()).thenReturn(15);
+		when(desafioDelUsuario2.getCantidadMuestrasRecolectadas()).thenReturn(25);
+		when(desafioDelUsuario3.getCantidadMuestrasRecolectadas()).thenReturn(10);
+		when(desafioDelUsuario4.getCantidadMuestrasRecolectadas()).thenReturn(5);
+		when(desafioDelUsuario5.getCantidadMuestrasRecolectadas()).thenReturn(50);
+		when(desafioDelUsuario6.getCantidadMuestrasRecolectadas()).thenReturn(13);
+		when(desafioDelUsuario7.getCantidadMuestrasRecolectadas()).thenReturn(12);
+		when(desafioDelUsuario8.getCantidadMuestrasRecolectadas()).thenReturn(50);
+		when(desafioDelUsuario9.getCantidadMuestrasRecolectadas()).thenReturn(5);
+		when(desafioDelUsuario10.getCantidadMuestrasRecolectadas()).thenReturn(10);
+		when(desafioDelUsuario11.getCantidadMuestrasRecolectadas()).thenReturn(6);
+		when(desafioDelUsuario12.getCantidadMuestrasRecolectadas()).thenReturn(26);
+		when(desafioDelUsuario13.getCantidadMuestrasRecolectadas()).thenReturn(10);
+		when(desafioDelUsuario14.getCantidadMuestrasRecolectadas()).thenReturn(8);
+		when(desafioDelUsuario15.getCantidadMuestrasRecolectadas()).thenReturn(14);
+		when(desafioDelUsuario16.getCantidadMuestrasRecolectadas()).thenReturn(24);
+		when(desafioDelUsuario17.getCantidadMuestrasRecolectadas()).thenReturn(11);
+		when(desafioDelUsuario18.getCantidadMuestrasRecolectadas()).thenReturn(19);
+		when(desafioDelUsuario19.getCantidadMuestrasRecolectadas()).thenReturn(25);
+		when(desafioDelUsuario20.getCantidadMuestrasRecolectadas()).thenReturn(15);
+		when(desafioDelUsuario21.getCantidadMuestrasRecolectadas()).thenReturn(7);
 
-		usuario.aceptarDesafio(desafioDelUsuario19);
-		when(desafio19.getCantMuestrasParaBatir()).thenReturn(5);
-		when(desafioDelUsuario19.getCantidadMuestrasRecolectadas()).thenReturn(5);
-		when(desafioDelUsuario19.estaCompleto()).thenReturn(true);
+		// Se aplican calificaciones 
+		when(desafioDelUsuario1.getPuntuacion()).thenReturn(3);
+		when(desafioDelUsuario2.getPuntuacion()).thenReturn(3);
+		when(desafioDelUsuario3.getPuntuacion()).thenReturn(3);
+		when(desafioDelUsuario4.getPuntuacion()).thenReturn(3);
+		when(desafioDelUsuario5.getPuntuacion()).thenReturn(3);
+		when(desafioDelUsuario6.getPuntuacion()).thenReturn(3);
+		when(desafioDelUsuario7.getPuntuacion()).thenReturn(3);
+		when(desafioDelUsuario8.getPuntuacion()).thenReturn(3);
+		when(desafioDelUsuario9.getPuntuacion()).thenReturn(3);
+		when(desafioDelUsuario10.getPuntuacion()).thenReturn(3);
+		when(desafioDelUsuario11.getPuntuacion()).thenReturn(3);
+		when(desafioDelUsuario12.getPuntuacion()).thenReturn(3);
+		when(desafioDelUsuario13.getPuntuacion()).thenReturn(3);
+		when(desafioDelUsuario14.getPuntuacion()).thenReturn(3);
+		when(desafioDelUsuario15.getPuntuacion()).thenReturn(3);
+		when(desafioDelUsuario16.getPuntuacion()).thenReturn(3);
+		when(desafioDelUsuario17.getPuntuacion()).thenReturn(3);
+		when(desafioDelUsuario18.getPuntuacion()).thenReturn(3);
+		when(desafioDelUsuario19.getPuntuacion()).thenReturn(5);
+		when(desafioDelUsuario20.getPuntuacion()).thenReturn(3);
+		when(desafioDelUsuario21.getPuntuacion()).thenReturn(3);
 		
-		usuario.calificarDesafio(desafioDelUsuario19, 5);
-		//when(usuario.desafioFavorito()).thenReturn(desafioDelUsuario19);
+		List<DesafioDelUsuario> desafiosEsperadosOrdenadosXSimilitud = Arrays.asList(desafioDelUsuario19, desafioDelUsuario12, desafioDelUsuario18, desafioDelUsuario16, desafioDelUsuario2);
 		
-		System.out.println(usuario.desafioFavorito());
-		//assertEquals(5, recomendadorPorFavoritos.recomendacionDesafiosPara(usuario).size());
-		//assertEquals(Arrays.asList(desafioDelUsuario19, desafioDelUsuario12, desafioDelUsuario18, desafioDelUsuario16, desafioDelUsuario2)
-		//			, recomendadorPorFavoritos.recomendacionDesafiosPara(usuario));
+		assertEquals(5, recomendadorPorFavoritos.recomendacionDesafiosPara(usuario).size());
+		assertEquals(desafiosEsperadosOrdenadosXSimilitud, recomendadorPorFavoritos.recomendacionDesafiosPara(usuario));
 	}
 	
 	
