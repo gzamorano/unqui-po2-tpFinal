@@ -7,7 +7,7 @@ public class Sistema {
 	
 	private List<Categoria> categorias = new ArrayList<Categoria>();
 	private List<Proyecto> proyectos = new ArrayList<Proyecto>();
-	private Busqueda busqueda;
+	//private Busqueda busqueda;
 	
 	
 	public List<Categoria> getCategorias() {
@@ -21,6 +21,14 @@ public class Sistema {
 	}
 	public void setProyectos(List<Proyecto> proyectos) {
 		this.proyectos = proyectos;
+	}
+	
+	public void addProyecto(Proyecto proyecto) {
+		this.proyectos.add(proyecto);
+	}
+	
+	public void addCategoria(Categoria categoria) {
+		this.categorias.add(categoria);
 	}
 	
 }
