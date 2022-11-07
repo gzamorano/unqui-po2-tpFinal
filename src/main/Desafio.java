@@ -5,11 +5,11 @@ import java.util.List;
 import restriccionDesafio.RestriccionTemporal;
 
 public class Desafio {
-	 Circulo area;
-	 List<RestriccionTemporal> restricciones;
-	 int cantMuestrasParaBatir; // indica la cantidad de muestras necesarias para que este desafio sea completado.
-	 int dificultad; // un num del 1 al 5, donde 1 es muy facil y 5 es muy dificil.
-	 int recompensa; //un num que indica el puntaje obtenido como recompensa
+	private Circulo area;
+	private List<RestriccionTemporal> restricciones;
+	private int cantMuestrasParaBatir; // indica la cantidad de muestras necesarias para que este desafio sea completado.
+	private int dificultad; // un num del 1 al 5, donde 1 es muy facil y 5 es muy dificil.
+	private int recompensa; //un num que indica el puntaje obtenido como recompensa
 	
 	 public Desafio(Circulo _area, List<RestriccionTemporal> _restricciones, int _cantMuestrasParaBatir, int _dificultad, int _recompensa) {
 		 area = _area;

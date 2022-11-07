@@ -2,8 +2,8 @@ package main;
 import java.awt.Point;
 
 public class Circulo {
-     Point centro;
-     Double radio;
+   private  Point centro;
+   private  Double radio;
      
      public Circulo(Point _centro, Double _radio) {
     	 centro = _centro;
