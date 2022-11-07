@@ -66,7 +66,7 @@ public class DesafioDelUsuario {
 	}
 
 	public boolean seAlcanzoLaCantidadDeMuestrasParaBatirElDesafio() {
-		return this.getCantidadMuestrasRecolectadas() == this.getDesafio().getCantMuestrasParaBatir();
+		return this.getCantidadMuestrasRecolectadas().equals(this.getDesafio().getCantMuestrasParaBatir());
 	}
 
 	public void calificarDesafio(Integer puntuacion) {

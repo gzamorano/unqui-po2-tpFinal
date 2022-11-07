@@ -111,7 +111,7 @@ public class Usuario {
 	public DesafioDelUsuario desafioFavorito() {
 		return this.desafiosCompletados()
 				.stream()
-				.filter(desafio -> desafio.getPuntuacion() == this.mayorCalificacionParaUnDesafio())
+				.filter(desafio -> desafio.getPuntuacion().equals(this.mayorCalificacionParaUnDesafio()) )
 				.findAny().orElseThrow(NoSuchElementException::new);
 	}
 
