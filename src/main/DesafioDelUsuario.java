@@ -1,4 +1,5 @@
 package main;
+import estadoDesafio.DesafioAceptado;
 import estadoDesafio.EsperandoAceptacion;
 import estadoDesafio.EstadoDesafio;
 
@@ -71,6 +72,10 @@ public class DesafioDelUsuario {
 
 	public void calificarDesafio(Integer puntuacion) {
 		this.getEstado().calificarDesafio(this, puntuacion);
+	}
+	
+	public boolean estaAceptado() {
+		return this.getEstado() instanceof DesafioAceptado;
 	}
 
 

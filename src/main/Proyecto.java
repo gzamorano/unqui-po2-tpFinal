@@ -10,7 +10,7 @@ public class Proyecto {
 	private List<Usuario> participantes = new ArrayList<Usuario>();
 	private List<Muestra> muestras = new ArrayList<Muestra>();
 	private List<Categoria> categorias = new ArrayList<Categoria>();
-	private List<Desafio> desafios;
+	private List<Desafio> desafios = new ArrayList<Desafio>();
 	
 	public String getNombre() {
 		return nombre;
@@ -50,9 +50,10 @@ public class Proyecto {
 		this.desafios = desafios;
 	}
 	
-	public Proyecto(String nombre, String descripcion) {
+	public Proyecto(String nombre, String descripcion, List<Desafio> desafios) {
 		this.setNombre(nombre);
 		this.setDescripcion(descripcion);
+		this.setDesafios(desafios);
 	}
 	
 	public void addParticipante(Usuario usuario) {

@@ -3,6 +3,9 @@ package main;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,10 +15,16 @@ class ProyectoTest {
 	Usuario usuario;     //DOC
 	Muestra muestra;     //DOC
 	Categoria categoria; //DOC
+	Desafio desafio1;
+	Desafio desafio2;
+	List<Desafio> listaDesafios;
 
 	@BeforeEach
 	void setUp() throws Exception {
-		proyecto = new Proyecto("Arboles de Quilmes", "Registrar todos los árboles del partido de Quilmes");
+		desafio1 = mock(Desafio.class);
+		desafio2 = mock(Desafio.class);
+		listaDesafios = new ArrayList<Desafio>(desafio1, desafio2);
+		proyecto = new Proyecto("Arboles de Quilmes", "Registrar todos los árboles del partido de Quilmes", listaDesafios);
 		muestra = mock(Muestra.class);
 		usuario = mock(Usuario.class);
 		categoria = mock(Categoria.class);

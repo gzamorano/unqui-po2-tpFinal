@@ -13,7 +13,7 @@ public class Muestra {
 		return coordenadas;
 	}
 
-	public void setCoordenadas(Point coordenadas) {
+	private void setCoordenadas(Point coordenadas) {
 		this.coordenadas = coordenadas;
 	}
 
@@ -21,7 +21,7 @@ public class Muestra {
 		return fecha;
 	}
 
-	public void setFecha(LocalDate fecha) {
+	private void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}
 
@@ -29,7 +29,7 @@ public class Muestra {
 		return usuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
+	private void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
 
@@ -37,6 +37,10 @@ public class Muestra {
 		this.setCoordenadas(coordenadas);
 		this.setFecha(fecha);
 		this.setUsuario(usuario);
+	}
+	
+	public boolean aplicaParaUnDesafioActivo(DesafioDelUsuario desafioUsuario) {
+		return desafioUsuario.estaAceptado() && desafioUsuario.getDesafio().muestraEstaEnElArea(this);
 	}
 
 }
