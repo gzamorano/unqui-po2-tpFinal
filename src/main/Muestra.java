@@ -13,7 +13,7 @@ public class Muestra {
 		return coordenadas;
 	}
 
-	public void setCoordenadas(Point coordenadas) {
+	protected void setCoordenadas(Point coordenadas) {
 		this.coordenadas = coordenadas;
 	}
 
@@ -21,7 +21,7 @@ public class Muestra {
 		return fecha;
 	}
 
-	public void setFecha(LocalDate fecha) {
+	protected void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}
 
@@ -29,7 +29,7 @@ public class Muestra {
 		return usuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
+	protected void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
 
