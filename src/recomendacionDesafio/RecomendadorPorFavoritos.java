@@ -10,7 +10,7 @@ public class RecomendadorPorFavoritos extends RecomendadorDesafio {
 
 	@Override
 	public List<DesafioDelUsuario> recomendacionDesafiosPara(Usuario usuario) {
-		return this.desafiosOrdenadosPorSimilitud(desafiosConMayorCoincidencia(usuario, 20), usuario.desafioFavorito()).subList(0, 5);
+		return this.desafiosOrdenadosPorSimilitud(this.desafiosConMayorCoincidencia(usuario, 20), usuario.desafioFavorito()).subList(0, 5);
 	}
 	
 	public List<DesafioDelUsuario> desafiosOrdenadosPorSimilitud(List<DesafioDelUsuario> desafiosAOrdenar, DesafioDelUsuario desafioFavorito) {

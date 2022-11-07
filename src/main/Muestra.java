@@ -39,8 +39,8 @@ public class Muestra {
 		this.setUsuario(usuario);
 	}
 	
-	public boolean aplicaParaUnDesafioActivo(DesafioDelUsuario desafioUsuario) {
-		return desafioUsuario.estaAceptado() && desafioUsuario.getDesafio().muestraEstaEnElArea(this);
+	public boolean aplicaParaUnDesafio(DesafioDelUsuario desafioUsuario) {
+		return desafioUsuario.getDesafio().muestraEstaEnElArea(this);
 	}
 
 }
