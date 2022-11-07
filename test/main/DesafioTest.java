@@ -52,16 +52,12 @@ class DesafioTest {
 	
 	@Test
 	void testmuestraPertenecienteAlArea() {
-		when(area.getCentro()).thenReturn(new Point(3,2));
-		when(area.getRadio()).thenReturn(1.0);
-        when(muestra.getCoordenadas()).thenReturn(new Point(3,3));
+		when(area.estaEnLaCircunferencia(muestra.getCoordenadas())).thenReturn(true);
 		assertTrue(desafio.muestraEstaEnElArea(muestra));
 	}
 	@Test
 	void testmuestraNoPertenecienteAlArea() {
-		when(area.getCentro()).thenReturn(new Point(3,2));
-		when(area.getRadio()).thenReturn(1.0);
-        when(muestra.getCoordenadas()).thenReturn(new Point(26,62));
+		when(area.estaEnLaCircunferencia(muestra.getCoordenadas())).thenReturn(false);
 		assertFalse(desafio.muestraEstaEnElArea(muestra));
 	}
 	
