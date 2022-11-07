@@ -23,7 +23,9 @@ class ProyectoTest {
 	void setUp() throws Exception {
 		desafio1 = mock(Desafio.class);
 		desafio2 = mock(Desafio.class);
-		listaDesafios = new ArrayList<Desafio>(desafio1, desafio2);
+		listaDesafios = new ArrayList<Desafio>();
+		listaDesafios.add(desafio1);
+		listaDesafios.add(desafio2);
 		proyecto = new Proyecto("Arboles de Quilmes", "Registrar todos los árboles del partido de Quilmes", listaDesafios);
 		muestra = mock(Muestra.class);
 		usuario = mock(Usuario.class);
@@ -50,7 +52,7 @@ class ProyectoTest {
 	
 	@Test
 	void testCuandoUnProyectoSeCreaNoTieneCategorias(){
-		assertEquals(proyecto.getCategorias(), 0);
+		assertEquals(proyecto.getCategorias().size(), 0);
 	}
 	
 	@Test
