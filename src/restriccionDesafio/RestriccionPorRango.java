@@ -2,16 +2,24 @@ package restriccionDesafio;
 import java.time.LocalDate;
 
 public class RestriccionPorRango extends RestriccionTemporal {
-	 LocalDate inicio;
-	 LocalDate fin;
+	 private LocalDate inicio;
+	 private LocalDate fin;
 	
 	public RestriccionPorRango(LocalDate _inicio, LocalDate _fin) {
-		inicio = _inicio;
-		fin = _fin;
+		this.inicio = _inicio;
+		this.fin = _fin;
 	}
- 
+
 	public LocalDate getInicio() {
 		return inicio;
+	}
+
+	public void setInicio(LocalDate inicio) {
+		this.inicio = inicio;
+	}
+
+	public void setFin(LocalDate fin) {
+		this.fin = fin;
 	}
 
 	public LocalDate getFin() {
@@ -25,6 +33,7 @@ public class RestriccionPorRango extends RestriccionTemporal {
 	
 	private boolean estaEnElRango(LocalDate fecha) {
 	return(fecha.isAfter(this.getInicio()) || fecha.isEqual(this.getInicio()) &&
-		   fecha.isBefore(this.getFin()) || fecha.isEqual(this.getFin()));
+		   (fecha.isBefore(this.getFin()) || fecha.isEqual(this.getFin())));
     }
+	
 }

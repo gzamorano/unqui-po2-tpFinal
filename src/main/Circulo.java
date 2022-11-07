@@ -10,6 +10,14 @@ public class Circulo {
     	 radio = _radio;
      }
 
+	public void setCentro(Point centro) {
+		this.centro = centro;
+	}
+
+	public void setRadio(Double radio) {
+		this.radio = radio;
+	}
+
 	public Point getCentro() {
 		return centro;
 	}
