@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import restriccionDesafio.RestriccionDiaDeSemana;
 import restriccionDesafio.RestriccionFinDeSemana;
 import restriccionDesafio.RestriccionTemporal;
-import java.awt.Point;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
