@@ -3,13 +3,13 @@ package main;
 import java.util.ArrayList;
 import java.util.List;
 
-import busquedaDeProyectos.Busqueda;
+import buscadorDeProyectos.Buscador;
 
 public class Sistema {
 	
 	private List<Categoria> categorias = new ArrayList<Categoria>();
 	private List<Proyecto> proyectos = new ArrayList<Proyecto>();
-	//private Busqueda busquedaDeProyectos;
+	private Buscador buscadorProyectos;
 	
 	
 	public List<Categoria> getCategorias() {
@@ -20,12 +20,20 @@ public class Sistema {
 		return proyectos;
 	}
 	
+	public Buscador getBuscadorProyectos() {
+		return this.buscadorProyectos;
+	}
+	
 	public void addProyecto(Proyecto proyecto) {
 		this.proyectos.add(proyecto);
 	}
 	
 	public void addCategoria(Categoria categoria) {
 		this.categorias.add(categoria);
+	}
+	
+	public List<Proyecto> buscarProyectos() {
+		return this.getBuscadorProyectos().buscarProyectosSegunFiltros(this.getProyectos());
 	}
 	
 }
