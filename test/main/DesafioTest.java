@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import restriccionDesafio.RestriccionDiaDeSemana;
 import restriccionDesafio.RestriccionFinDeSemana;
 import restriccionDesafio.RestriccionTemporal;
-import java.awt.Point;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,6 +61,18 @@ class DesafioTest {
 		assertFalse(desafio.muestraEstaEnElArea(muestra));
 	}
 	
+	@Test
+	void testMuestraCumpleLasRestricciones() {
+		desafio.agregarRestriccionTemporal(new RestriccionFinDeSemana()); //setea restriccion de fin de semana
+		when(muestra.getFecha()).thenReturn(LocalDate.of(2022, 11, 19));  //mockea para que retorne sabado
+		assertTrue(desafio.muestraCumpleRestricciones(muestra));
+	}
 	
+	@Test
+	void testMuestraNoCumpleLasRestricciones() {
+		desafio.agregarRestriccionTemporal(new RestriccionFinDeSemana()); //setea restriccion de fin de semana
+		when(muestra.getFecha()).thenReturn(LocalDate.of(2022, 11, 16));  //mockea para que retorne miércoles
+		assertFalse(desafio.muestraCumpleRestricciones(muestra));
+	}
 
 }

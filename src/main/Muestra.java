@@ -40,7 +40,7 @@ public class Muestra {
 	}
 	
 	public boolean aplicaParaUnDesafio(DesafioDelUsuario desafioUsuario) {
-		return desafioUsuario.getDesafio().muestraEstaEnElArea(this);
+		return (desafioUsuario.getDesafio().muestraEstaEnElArea(this) && desafioUsuario.getDesafio().muestraCumpleRestricciones(this));
 	}
 
 }

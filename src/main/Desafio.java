@@ -49,5 +49,11 @@ public class Desafio {
     public boolean muestraEstaEnElArea(Muestra muestra) {
     	return area.estaEnLaCircunferencia(muestra.getCoordenadas());
     }
+
+	public boolean muestraCumpleRestricciones(Muestra muestra) {
+		return this.getRestricciones()
+							.stream()
+							.allMatch(r -> r.cumple(muestra.getFecha()));
+	}
     
 }
