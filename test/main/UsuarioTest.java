@@ -2,14 +2,11 @@ package main;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-import java.awt.Point;
 import java.util.Arrays;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import estadoDesafio.*;
-import main.*;
 import recomendacionDesafio.*;
 
 
@@ -19,18 +16,26 @@ class UsuarioTest {
 	DesafioDelUsuario desafioDelUsuario;
 	DesafioDelUsuario otroDesafioDelUsuario;
 	Desafio desafio;
+	Desafio otroDesafio;
 	DesafioDelUsuario desafioDelUsuarioSpy;
 	Muestra muestra;
+	Proyecto proyecto;
 	
 	@BeforeEach
 	void setUp() throws Exception {
 		preferencia = mock(Preferencia.class);
+		proyecto = mock(Proyecto.class);
 		usuario = new Usuario(preferencia);
+		desafio = mock(Desafio.class);
+
 		desafioDelUsuario = mock(DesafioDelUsuario.class);
 		otroDesafioDelUsuario = mock(DesafioDelUsuario.class);
-		desafio = mock(Desafio.class);
 		desafioDelUsuarioSpy = spy(new DesafioDelUsuario(desafio));
 		muestra =  mock(Muestra.class);
+		
+		
+		usuario.addProyecto(proyecto);
+		when(proyecto.getDesafios()).thenReturn(Arrays.asList(desafio, otroDesafio));
 	}
 
 	
@@ -40,19 +45,23 @@ class UsuarioTest {
 		assertTrue(usuario.getDesafiosDelUsuario().isEmpty());
 	}
 	
-	// Testea que al crearse un usuario no tenga desafios recomendados asignados
-		@Test
-		void testCuandoUnUsuarioSeCreaComienzaSinDesafiosRecomendados() {
-			assertTrue(usuario.getDesafiosRecomendados().isEmpty());
-		}
-	
-	
-	// Testea la asignación de un desafio para un usuario 
+	// Testea la asignación válida de un desafio para un usuario 
 	@Test
 	void testUnUsuarioSeAdjudicaUnDesafioParaSiMismo() {
 		usuario.añadirDesafioDelUsuario(desafioDelUsuario);
 		assertEquals(usuario.getDesafiosDelUsuario().get(0), desafioDelUsuario);
 	}
+	
+	// Testea que no se le asigna un desafio que no pertenece a alguno de los proyectos
+	// en los que participa el usuario
+	@Test
+	void testNoSeAsignaUnDesafioQueNoFormaParteDeAlgunProyectoDelUsuario() {
+		when(proyecto.getDesafios()).thenReturn(Arrays.asList());
+		usuario.añadirDesafioDelUsuario(desafioDelUsuario);
+		assertTrue(usuario.getDesafiosDelUsuario().isEmpty());
+	}
+	
+	
 	
 	// Testea que un desafio completo es un desafio superado por un usuario
 	@Test
@@ -106,6 +115,8 @@ class UsuarioTest {
 		usuario.añadirDesafioDelUsuario(desafioDelUsuario);
 		usuario.añadirDesafioDelUsuario(otroDesafioDelUsuario);
 		
+		when(desafioDelUsuario.estaActivo()).thenReturn(true);
+		when(otroDesafioDelUsuario.estaActivo()).thenReturn(true);
 		when(desafioDelUsuario.porcentajeDeCompletitud()).thenReturn(70d);
 		when(otroDesafioDelUsuario.porcentajeDeCompletitud()).thenReturn(50d);
 		
@@ -167,17 +178,11 @@ class UsuarioTest {
 		assertEquals(otroDesafioDelUsuario, usuario.desafioFavorito());
 	}
 	
-	// Testea que un usuario al crearse no tiene aún desafios recomendados
-	@Test
-	void testCuandoSeCreaUnUsuarioNoTieneDesafiosRecomendados() {
-		assertTrue(usuario.getDesafiosRecomendados().isEmpty());
-	}
-	
 	
 	// Testea que al buscar la coincidencia de desafios para el usuario dado, se hayan añadido los desafios
-	// a los desafios recomendados del usuario
+	// a los desafios de tal usuario
 	@Test
-	void testUnUsuarioBuscaMatchDeDesafiosYLosQueCoincidenSeAgreganEnSuListadoDeDesafiosRecomendados() {
+	void testUnUsuarioBuscaMatchDeDesafiosYLosQueCoincidenSeAgreganEnSuListadoDeDesafios() {
 		RecomendadorDesafio recomendadorPorPreferencias;
 		recomendadorPorPreferencias = spy(new RecomendadorPorPreferencias());
 		
@@ -193,6 +198,8 @@ class UsuarioTest {
 		DesafioDelUsuario desafioDelUsuario4 = spy(new DesafioDelUsuario(desafio4));
 		DesafioDelUsuario desafioDelUsuario5 = spy(new DesafioDelUsuario(desafio5));
 		
+		when(proyecto.getDesafios()).thenReturn(Arrays.asList(desafio1, desafio2, desafio3, desafio4, desafio5));
+		
 		usuario.añadirDesafioDelUsuario(desafioDelUsuario1);
 		usuario.añadirDesafioDelUsuario(desafioDelUsuario2);
 		usuario.añadirDesafioDelUsuario(desafioDelUsuario3);
@@ -203,7 +210,7 @@ class UsuarioTest {
 		usuario.buscarMatchDesafios();
 		
 		verify(recomendadorPorPreferencias).recomendacionDesafiosPara(usuario);
-		assertTrue(usuario.getDesafiosRecomendados().containsAll(Arrays.asList(desafioDelUsuario1, desafioDelUsuario2, desafioDelUsuario3, desafioDelUsuario4, desafioDelUsuario5)));
+		assertTrue(usuario.getDesafiosDelUsuario().containsAll(Arrays.asList(desafioDelUsuario1, desafioDelUsuario2, desafioDelUsuario3, desafioDelUsuario4, desafioDelUsuario5)));
 	}
 	
 	//Testea que el usuario conoce los desafios que tiene activo
