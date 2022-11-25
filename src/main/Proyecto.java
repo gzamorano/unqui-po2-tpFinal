@@ -58,12 +58,13 @@ public class Proyecto {
 	
 	public void addParticipante(Usuario usuario) {
 		participantes.add(usuario);
-		this.agregarDesafiosAUsuario(usuario);
+		usuario.addProyecto(this);
+		//this.agregarDesafiosAUsuario(usuario);
 	}
 	
-	private void agregarDesafiosAUsuario(Usuario usuario) {
-		this.getDesafios().stream().forEach(desafio -> usuario.añadirDesafioDelUsuario(new DesafioDelUsuario(desafio)));	
-	}
+//	private void agregarDesafiosAUsuario(Usuario usuario) {
+//		this.getDesafios().stream().forEach(desafio -> usuario.añadirDesafioDelUsuario(new DesafioDelUsuario(desafio)));	
+//	}
 	
 	public void addMuestra(Muestra muestra) {
 		muestras.add(muestra);	

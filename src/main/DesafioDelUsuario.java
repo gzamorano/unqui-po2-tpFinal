@@ -55,6 +55,7 @@ public class DesafioDelUsuario {
 		this.getEstado().aceptarDesafio(this);
 	}
 
+	// Devuelve el porcentaje de completitud del desafio del usuario
 	public Double porcentajeDeCompletitud() {
 		return (this.getCantidadMuestrasRecolectadas() * 100.0) / this.getDesafio().getCantMuestrasParaBatir();
 	}
@@ -69,13 +70,19 @@ public class DesafioDelUsuario {
 		return this.getCantidadMuestrasRecolectadas().equals(this.getDesafio().getCantMuestrasParaBatir());
 	}
 
+	// Se puntua a un desafio del 1 al 5
 	public void calificarDesafio(Integer puntuacion) {
 		this.getEstado().calificarDesafio(this, puntuacion);
 	}
-	
-	public boolean estaAceptado() {
-		return this.getEstado() instanceof DesafioAceptado;
+
+	public boolean estaActivo() {
+		return this.getEstado().estaActivo();
 	}
+
+	public boolean estaSinAceptar() {
+		return this.getEstado().estaSinAceptar();
+	}
+
 
 
 }

@@ -24,4 +24,9 @@ public class EsperandoAceptacion extends EstadoDesafio{
 		// no hace nada, el desafio ni siquiera fue aceptado
 	}
 	
+	@Override
+	public boolean estaSinAceptar() {
+		return true;
+	}
+	
 }

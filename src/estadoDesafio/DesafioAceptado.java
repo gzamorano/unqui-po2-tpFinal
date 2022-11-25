@@ -24,5 +24,10 @@ public class DesafioAceptado extends EstadoDesafio {
 	public void calificarDesafio(DesafioDelUsuario desafioDelUsuario, Integer puntuacion) {
 		// no hace nada, el desafio todavía está en curso
 	}
+	
+	@Override 
+	public boolean estaActivo() {
+		return true;
+	}
 
 }

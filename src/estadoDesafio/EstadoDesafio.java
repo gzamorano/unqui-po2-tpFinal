@@ -11,5 +11,13 @@ public abstract class EstadoDesafio {
 	public abstract void incrementarCantidadMuestrasRecolectadas(DesafioDelUsuario desafioDelUsuario);
 
 	public abstract void calificarDesafio(DesafioDelUsuario desafioDelUsuario, Integer puntuacion);
+
+	public boolean estaActivo() {
+		return false;
+	}
+
+	public boolean estaSinAceptar() {
+		return false;
+	}
 	
 }
