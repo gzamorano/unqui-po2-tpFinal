@@ -32,7 +32,7 @@ public class Usuario {
 		this.getProyectosAbarcados().add(proyecto);
 	}
 	
-	// Correción antes de añadir el desafio validar que el mismo pertenezca a algun proyecto en el que participa el usuario
+	// Corrección antes de añadir el desafio validar que el mismo pertenezca a algun proyecto en el que participa el usuario
 	public void añadirDesafioDelUsuario(DesafioDelUsuario desafio) {
 		if(this.desafioPerteneceAAlgunProyectoDelUsuario(desafio)) {
 			this.getDesafiosDelUsuario().add(desafio);
@@ -77,7 +77,7 @@ public class Usuario {
 			.forEach(desafio -> {if(muestra.aplicaParaUnDesafio(desafio)) desafio.incrementarCantidadMuestrasRecolectadas();});
 	}
 
-	// Correción delegando al estado del desafio, en lugar de usar instanceOf
+	// Corrección delegando al estado del desafio, en lugar de usar instanceOf
 	public List<DesafioDelUsuario> desafiosActivos(){
 		return this.getDesafiosDelUsuario()
 				.stream()
@@ -150,7 +150,7 @@ public class Usuario {
 	}
 	
 	// Busca desafios a recomendar para el usuario de acuerdo con la recomendacion de desafio elegido por el mencionado.
-	// Correción eliminar el listado de desafios recomendados y colocarlos en el único listado de desafios del usuario.
+	// Corrección eliminar el listado de desafios recomendados y colocarlos en el único listado de desafios del usuario.
 	public void buscarMatchDesafios() {
 		List<DesafioDelUsuario> desafiosRecomendados = this.recomendacionDesafio.recomendacionDesafiosPara(this);
 		desafiosRecomendados.stream()
