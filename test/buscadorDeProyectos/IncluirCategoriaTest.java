@@ -12,9 +12,9 @@ import org.junit.jupiter.api.Test;
 import main.Categoria;
 import main.Proyecto;
 
-class ExcluirCategoriaTest {
+class IncluirCategoriaTest {
 	
-	ExcluirCategoria filtroCategoria;
+	IncluirCategoria filtroCategoria;
 	List<Categoria> categoriasFiltro = new ArrayList<Categoria>();
 	Categoria categoria1;
 	Categoria categoria2;
@@ -25,10 +25,10 @@ class ExcluirCategoriaTest {
 	void setUp() throws Exception {
 		categoria1 = mock(Categoria.class);
 		categoria2 = mock(Categoria.class);
-		categoriasFiltro.add(categoria1); //categorias que NO debe tener un proyecto para pasar el filtro
-		filtroCategoria = new ExcluirCategoria(categoriasFiltro);
+		categoriasFiltro.add(categoria1); //categorias que debe tener un proyecto para pasar el filtro
+		filtroCategoria = new IncluirCategoria(categoriasFiltro);
 		proyecto = mock(Proyecto.class);
-		categoriasProyecto.add(categoria2); //categorias que tiene el proyecto
+		categoriasProyecto.add(categoria1); //categorias que tiene el proyecto
 		
 		}
 
@@ -37,7 +37,7 @@ class ExcluirCategoriaTest {
 		assertEquals(filtroCategoria.getCategorias(), categoriasFiltro);
 	}
 	
-	//un proyecto cumple con el filtro cuando no tiene en sus categorias a NINGUNA por las que se filtra.
+	//un proyecto cumple con el filtro cuando tiene en sus categorias a ALGUNA por las que se filtra.
 	@Test
 	void testUnProyectoCumpleConElFiltro() {
 		when(proyecto.getCategorias()).thenReturn(categoriasProyecto);
@@ -46,7 +46,7 @@ class ExcluirCategoriaTest {
 	
 	@Test
 	void testUnProyecto_no_cumpleConElFiltro() {
-		categoriasProyecto.add(categoria1); //agrega la categoria que tiene el filtro por tanto no va a cumplir.
+		categoriasProyecto.remove(categoria1); //elimina la categoria en común por tanto no va a cumplir.
 		when(proyecto.getCategorias()).thenReturn(categoriasProyecto);
 		assertFalse(filtroCategoria.cumple(proyecto));
 	}
