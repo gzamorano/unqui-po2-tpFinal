@@ -33,7 +33,7 @@ class CoincidirTituloTest {
 	}
 	
 	@Test
-	void testUnProyecto_No_CoincideConElTitulo() {
+	void testUnProyecto_no_coincideConElTitulo() {
 		when(proyecto.getNombre()).thenReturn("ñam fri frufi fali fru");
 		assertFalse(filtroTitulo.cumple(proyecto));
 	}
