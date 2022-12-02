@@ -178,6 +178,13 @@ class UsuarioTest {
 		assertEquals(otroDesafioDelUsuario, usuario.desafioFavorito());
 	}
 	
+	// Testea que al crearse un usuario su recomendación de desafios por defecto es por sus 
+	// preferencias
+	@Test
+	void testUnUsuarioPoseePorDefectoRecomendacionDeDesafiosPorPreferencias() {
+		assertTrue(usuario.getRecomendacionDesafio() instanceof RecomendadorPorPreferencias);
+	}
+	
 	
 	// Testea que al buscar la coincidencia de desafios para el usuario dado, se hayan añadido los desafios
 	// a los desafios de tal usuario

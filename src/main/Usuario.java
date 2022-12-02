@@ -14,6 +14,7 @@ public class Usuario {
 	
 	public Usuario(Preferencia preferencia) {
 		this.preferencia = preferencia;
+		this.recomendacionDesafio = new RecomendadorPorPreferencias();
 	}
 	
 	public Preferencia getPreferencia() {

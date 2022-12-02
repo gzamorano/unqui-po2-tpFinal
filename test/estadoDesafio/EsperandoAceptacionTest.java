@@ -1,5 +1,6 @@
 package estadoDesafio;
 
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -18,6 +19,13 @@ class EsperandoAceptacionTest {
 		// Para cada uno de los test se requiere que el estado sea DesafioCompletado
 		when(desafioDelUsuario.getEstado()).thenReturn(estadoDesafio);
 	}
+	
+	// Testea que un estado de desafio está sin aceptar
+	@Test
+	void testUnEstadoEsperandoAceptacionEstaSinAceptar() {
+		assertTrue(estadoDesafio.estaSinAceptar());
+	}
+	
 
 	// Testea que un estado de desafio sin aceptar al aceptar un desafio su estado cambia a aceptado
 	@Test
