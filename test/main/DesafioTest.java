@@ -27,12 +27,24 @@ class DesafioTest {
 		desafio = new Desafio(area,restricciones,cantMuestrasParaBatir,dificultad,recompensa);
 		muestra = mock(Muestra.class);
 	}
-	
+	@Test
+	void testConstructor() {
+		assertEquals(desafio.getArea(),area);
+		assertEquals(desafio.getRestricciones(),restricciones);
+		assertEquals(desafio.getCantMuestrasParaBatir(),cantMuestrasParaBatir);
+		assertEquals(desafio.getDificultad(),dificultad);
+		assertEquals(desafio.getRecompensa(),recompensa);
+	}
 
 	@Test
 	void testdesafioIniciaSinRestricciones() {
 		assertTrue(desafio.getRestricciones().isEmpty());
 	}
+    @Test 
+    void testSetearUnArea() {
+    	desafio.setArea(area);
+    	assertEquals(desafio.getArea(),area);
+    }
 	@Test 
 	void testseAgregoRestriccionADesafio() {
 		desafio.agregarRestriccionTemporal(new RestriccionFinDeSemana());
