@@ -12,9 +12,9 @@ import org.junit.jupiter.api.Test;
 class ProyectoTest {
 	
 	Proyecto proyecto;   //SUT
-	Usuario usuario;     //DOC
-	Muestra muestra;     //DOC
-	Categoria categoria; //DOC
+	Usuario usuario;
+	Muestra muestra;
+	Categoria categoria;
 	Desafio desafio1;
 	Desafio desafio2;
 	List<Desafio> listaDesafios;
@@ -36,6 +36,7 @@ class ProyectoTest {
 	void testConstructor() {
 		assertEquals(proyecto.getNombre(), "Arboles de Quilmes");
 		assertEquals(proyecto.getDescripcion(), "Registrar todos los árboles del partido de Quilmes");
+		assertEquals(proyecto.getDesafios(), listaDesafios);
 	}
 	
 	@Test
@@ -47,8 +48,6 @@ class ProyectoTest {
 	void testCuandoUnProyectoSeCreaNoTieneMuestras() {
 		assertTrue(proyecto.getMuestras().isEmpty());
 	}
-	
-	//falta test de desafios ************************************************************************
 	
 	@Test
 	void testCuandoUnProyectoSeCreaNoTieneCategorias(){
