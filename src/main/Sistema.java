@@ -10,8 +10,7 @@ public class Sistema {
 	private List<Categoria> categorias = new ArrayList<Categoria>();
 	private List<Proyecto> proyectos = new ArrayList<Proyecto>();
 	private Buscador buscadorProyectos;
-	
-	
+
 	public List<Categoria> getCategorias() {
 		return categorias;
 	}
@@ -22,6 +21,10 @@ public class Sistema {
 	
 	public Buscador getBuscadorProyectos() {
 		return this.buscadorProyectos;
+	}
+	
+	public void setBuscadorProyectos(Buscador buscadorProyectos) {
+		this.buscadorProyectos = buscadorProyectos;
 	}
 	
 	public void addProyecto(Proyecto proyecto) {
